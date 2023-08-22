@@ -1,0 +1,9 @@
+﻿@model ATM.Web.Models.BankDetail;
+
+@{
+    ViewData["Title"] = "Success";
+}
+<h1 class="text-success">Amount credited successfully.</h1>
+<h3 class="text-dark">Your current balance is: @Model.Amount</h3>
+<hr />
+<a asp-action="AvailableServices">Home</a>
