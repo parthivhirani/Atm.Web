@@ -1,6 +1,6 @@
 # Web ATM
 
-This project is created in **_.net 7_** .
+This project is created in **_.net 7_** .  
 It contains different **_ATM service_** and its implementation in web application.
 
 To run the project follow the below steps:
