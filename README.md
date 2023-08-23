@@ -1,8 +1,8 @@
 # Web ATM
 
-This project is created in **_.net 7_** .  
+This project is created in **_.net 7_** .\
 It contains different **_ATM Service_** and its implementation in ASP .Net Core Web Application.
----
+***
 
 ## To run the project follow the below steps:
 - Download zip file of project and extract it.
