@@ -61,12 +61,12 @@ namespace ATM.Web.Controllers
             if(account != null)
             {
                 ViewBag.Error = null;
-                ViewBag.Balance = "Your account balance is: "+account.Amount;
+                ViewBag.Balance = "Your account balance is: ₹ " + account.Amount;
             }
             else
             {
                 ViewBag.Balance = null;
-                ViewBag.Error = "Enter valid PIN";
+                ViewBag.Error = "PIN is incorrect";
             }
             return View();
         }
@@ -147,7 +147,7 @@ namespace ATM.Web.Controllers
                     }
                     else
                     {
-                        ViewBag.Error = "You can't credit more than 20,000 using ATM";
+                        ViewBag.Error = "You can't credit more than 20,000 rupees using ATM";
                         return View();
                     }
                 }
@@ -264,7 +264,7 @@ namespace ATM.Web.Controllers
             }
             else
             {
-                ViewBag.Error = "Please enter valid details";
+                ViewBag.Error = "Please enter valid bank details";
                 return View(transferViewModel);
             }
         }

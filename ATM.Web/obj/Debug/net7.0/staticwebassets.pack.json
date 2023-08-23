@@ -13,6 +13,10 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\parthiv\\Documents\\Parthiv\\ASP .NET Core\\UnitTesting\\ATM.Web\\wwwroot\\images\\home-image.png",
+      "PackagePath": "staticwebassets\\images\\home-image.png"
+    },
+    {
       "Id": "C:\\Users\\parthiv\\Documents\\Parthiv\\ASP .NET Core\\UnitTesting\\ATM.Web\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },

@@ -8,15 +8,18 @@ namespace ATM.Web.ViewModels
     {
         [Required]
         [MaxLength(100, ErrorMessage = "First name is too long")]
+        [Display(Name = "First Name")]
         public string FirstName { get; set; }
 
         [Required]
         [MaxLength(100, ErrorMessage = "Last name is too long")]
+        [Display(Name = "Last Name")]
         public string LastName { get; set; }
 
         [Required]
         [MinLength(10, ErrorMessage = "Enter 10 digit contact number only")]
         [MaxLength(10, ErrorMessage = "Enter 10 digit contact number only")]
+        [Display(Name = "Contact Number")]
         public string ContactNo { get; set; }
 
         [Required]
@@ -32,6 +35,7 @@ namespace ATM.Web.ViewModels
         [Required]
         [DataType(DataType.Password)]
         [Compare("Password", ErrorMessage = "Confirm password doesn't matched")]
+        [Display(Name = "Confirm Password")]
         public string ConfirmPassword { get; set; }
     }
 }

@@ -2,10 +2,11 @@
 @{
     ViewData["Title"] = "Services";
 }
+
 @{
     if(HttpContextAccessor?.HttpContext?.Request.Cookies["acc_no"] != null)
     {
-        <h3>Your Account No: @HttpContextAccessor?.HttpContext.Request.Cookies["acc_no"]</h3>
+        <h3>Your Account No: <span class="text-secondary">@HttpContextAccessor?.HttpContext.Request.Cookies["acc_no"]</span></h3>
         <hr />
         <div class="container text-center">
             <div class="row g-2">
@@ -29,6 +30,9 @@
     }
     else
     {
-        <h1 class="text-danger">Please Login to avail ATM services!</h1>
+        <h1 class="text-danger">Access Denied &#9888;</h1>
+        <h1 class="text-danger">Please enter your ATM card number to avail services!</h1>
+        <hr />
+        <a asp-action="Index" asp-controller="Home">Home</a>
     }
 }

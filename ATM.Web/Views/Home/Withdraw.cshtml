@@ -1,31 +1,43 @@
-﻿@{
+﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor;
+@{
     ViewData["Title"] = "Withdraw";
 }
+@{
 
-<h1>Withdraw Amount</h1>
-<hr />
-<h5 class="text-danger">@ViewBag.Error</h5>
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Withdraw" method="post">
-            <div class="form-group">
-                <label class="control-label">Amount</label>
-                <input name="amount" type="number" class="form-control" placeholder="Enter amount to withdraw" />
-            </div>
-            <div class="form-group">
-                <label class="control-label">PIN</label>
-                <input name="pin" type="number" class="form-control" placeholder="Enter your PIN" max="9999" min="1000" />
-            </div>
+    if (HttpContextAccessor?.HttpContext?.Request.Cookies["acc_no"] != null)
+    {
+        <h1>Withdraw Amount</h1>
+        <hr />
+        <h5 class="text-danger">@ViewBag.Error</h5>
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="Withdraw" method="post">
+                    <div class="form-group">
+                        <label class="control-label">Amount</label>
+                        <input name="amount" type="number" class="form-control" placeholder="Enter amount to withdraw" />
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">PIN</label>
+                        <input name="pin" type="password" class="form-control" placeholder="Enter your PIN" max="9999" min="1000" />
+                    </div>
 
-            <div class="form-group">
-                <hr />
-                <input type="submit" value="Enter" class="btn btn-primary" /> | 
-                <a asp-action="AvailableServices">Back</a>
+                    <div class="form-group">
+                        <hr />
+                        <input type="submit" value="Process" class="btn btn-primary" /> | 
+                        <a asp-action="AvailableServices" asp-controller="Home">Back</a>
+                    </div>
+                </form>
             </div>
-        </form>
-    </div>
-</div>
-
+        </div>
+    }
+    else
+    {
+        <h1 class="text-danger">Access Denied &#9888;</h1>
+        <h1 class="text-danger">Please enter your ATM card number to access this service!</h1>
+        <hr />
+        <a asp-action="Index" asp-controller="Home">Home</a>
+    }
+}
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");

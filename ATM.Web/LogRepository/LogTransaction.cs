@@ -31,7 +31,7 @@ namespace ATM.Web.LogRepository
         {
             var log = new LogDetail()
             {
-                FromAccount = from,
+                FromAccount = from.ToString(),
                 AmountTransferred = amount,
                 DateOfTransaction = DateTime.Now,
                 TransactionType = type

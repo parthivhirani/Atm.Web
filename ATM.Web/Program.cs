@@ -1,6 +1,7 @@
 using ATM.Web.Controllers;
 using ATM.Web.Data;
 using ATM.Web.LogRepository;
+using ATM.Web.Repository;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,6 +13,8 @@ builder.Services.AddDbContext<BankDbContext>(
     options => options.UseSqlServer(builder.Configuration.GetConnectionString("DBCS")));
 
 builder.Services.AddScoped<LogTransaction>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+
 builder.Services.AddHttpContextAccessor();
 
 builder.Services.AddMvc();

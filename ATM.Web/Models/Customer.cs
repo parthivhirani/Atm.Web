@@ -27,7 +27,7 @@ namespace ATM.Web.Models
         public string Email { get; set; }
 
         [ForeignKey("AccountNo")]
-        public BankDetail BankDetail { get; set; }
+        public BankDetail BankDetails { get; set; }
 
         public string PasswordHash { get; set; }
     }

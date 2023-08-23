@@ -1,5 +1,4 @@
-﻿using ATM.Web.Data;
-using ATM.Web.Models;
+﻿using ATM.Web.Repository;
 using ATM.Web.ViewModels;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,29 +6,34 @@ namespace ATM.Web.Controllers
 {
     public class UserController : Controller
     {
-        private readonly BankDbContext _context;
+        private readonly IUserRepository _userRepository;
 
-        public UserController(BankDbContext context)
+        public UserController(IUserRepository userRepository)
         {
-            _context = context;
+            _userRepository = userRepository;
         }
+
+        [HttpGet]
+        public IActionResult Register()
+        {
+            return View();
+        }
+
+        [HttpPost]
         public IActionResult Register(RegisterViewModel registerViewModel)
         {
             if(ModelState.IsValid)
             {
-                var newUserBankDetail = new BankDetail()
+                var result = _userRepository.CreateUser(registerViewModel);
+                if (result != null)
                 {
-                    AccountNo = Guid.NewGuid().ToString(),
-                    ATMCardNo = new Random().NextInt64(1000000000000000, 9999999999999999),
-                    PIN = new Random().Next(1000, 9999),
-                    Amount = 3000,
-                };
-                _context.BankDetails.Add(newUserBankDetail);
-                _context.SaveChanges();
-
-
+                    return View("RegistrationSuccess", result);
+                    //return View("Index", "Home");
+                }
+                ViewBag.Error = "User can't registered";
+                return View(registerViewModel);
             }
-            return View();
+            return View(registerViewModel);
         }
     }
 }

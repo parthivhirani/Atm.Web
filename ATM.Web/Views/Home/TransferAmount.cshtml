@@ -1,45 +1,59 @@
-﻿@model ATM.Web.ViewModels.TransferViewModel
+﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor;
+@model ATM.Web.ViewModels.TransferViewModel
 
 @{
-    ViewData["Title"] = "TransferAmount";
+    ViewData["Title"] = "Bank Transfer";
 }
 
-<h1>Transfer Amount</h1>
-<h3 class="text-secondary">Enter recipient details</h3>
-<hr />
-<h5 class="text-danger">@ViewBag.Error</h5>
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="TransferAmount">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="AccountNo" class="control-label"></label>
-                <input asp-for="AccountNo" class="form-control" placeholder="Enter recipient's account no." />
-                <span asp-validation-for="AccountNo" class="text-danger"></span>
+@{
+    if (HttpContextAccessor?.HttpContext?.Request.Cookies["acc_no"] != null)
+    {
+        <h1>Transfer Amount</h1>
+        <h3 class="text-secondary">Enter recipient details</h3>
+        <hr />
+        <h5 class="text-danger">@ViewBag.Error</h5>
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="TransferAmount">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="AccountNo" class="control-label"></label>
+                        <input asp-for="AccountNo" class="form-control" placeholder="Enter recipient's account no." />
+                        <span asp-validation-for="AccountNo" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ConfirmAccountNo" class="control-label"></label>
+                        <input asp-for="ConfirmAccountNo" class="form-control" placeholder="Re-enter recipient's account no." />
+                        <span asp-validation-for="ConfirmAccountNo" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Amount" class="control-label"></label>
+                        <input asp-for="Amount" class="form-control" placeholder="Enter amount to transfer" />
+                        <span asp-validation-for="Amount" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="PIN" class="control-label"></label>
+                        <input asp-for="PIN" class="form-control" type="password" placeholder="Enter your PIN" />
+                        <span asp-validation-for="PIN" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <br />
+                        <input type="submit" value="Transfer" class="btn btn-success" /> |
+                        <a asp-action="AvailableServices" asp-controller="Home">Back</a>
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label asp-for="ConfirmAccountNo" class="control-label"></label>
-                <input asp-for="ConfirmAccountNo" class="form-control" placeholder="Re-enter recipient's account no." />
-                <span asp-validation-for="ConfirmAccountNo" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Amount" class="control-label"></label>
-                <input asp-for="Amount" class="form-control" placeholder="Enter amount to transfer" />
-                <span asp-validation-for="Amount" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PIN" class="control-label"></label>
-                <input asp-for="PIN" class="form-control" type="password" placeholder="Enter your PIN" />
-                <span asp-validation-for="PIN" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <br />
-                <input type="submit" value="Transfer" class="btn btn-success" /> |
-                <a asp-action="AvailableServices">Back</a>
-            </div>
-        </form>
-    </div>
-</div>
+        </div>
+    }
+    else
+    {
+        <h1 class="text-danger">Access Denied &#9888;</h1>
+        <h1 class="text-danger">Please enter your ATM card number to access this service!</h1>
+        <hr />
+        <a asp-action="Index" asp-controller="Home">Home</a>
+    }
+}
+
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

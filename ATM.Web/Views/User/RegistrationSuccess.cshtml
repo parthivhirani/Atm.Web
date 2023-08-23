@@ -1,0 +1,26 @@
+﻿@model ATM.Web.ViewModels.RegistrationSuccessViewModel;
+
+<h1 class="text-success">Congratulations &#127881;, @Model.FullName for opening new account!</h1>
+<hr />
+<h5 class="text-dark">Find the details of your bank account below:</h5>
+<table>
+    <tr>
+        <th class="col-md-4">Account No.</th>
+        <td>@Model.AccountNo</td>
+    </tr>
+    <tr>
+        <th class="col-md-4">ATM Card No.</th>
+        <td>@Model.ATMCardNo</td>
+    </tr>
+    <tr>
+        <th class="col-md-4">ATM PIN</th>
+        <td>@Model.PIN</td>
+    </tr>
+</table>
+<hr />
+<h3 class="text-danger">Note &#9888;</h3>
+<h6 class="text-danger">Don't share this bank details with anyone!</h6>
+<h6 class="text-danger">Change your ATM PIN after first use.</h6>
+<h6 class="text-dark">Store this bank details safely for future use.</h6>
+<hr />
+<p>It is advisable to leave this page now. <a asp-action="Index" asp-controller="Home" target="_blank">Home</a></p>

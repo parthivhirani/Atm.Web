@@ -1,40 +1,53 @@
-﻿@model ATM.Web.ViewModels.ChangePINViewModel
+﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor;
+@model ATM.Web.ViewModels.ChangePINViewModel
 
 @{
     ViewData["Title"] = "Change PIN";
 }
+@{
 
-<h1>Change your PIN</h1>
+    if (HttpContextAccessor?.HttpContext?.Request.Cookies["acc_no"] != null)
+    {
+        <h1>Change your PIN</h1>
 
-<hr />
-<h5 class="text-danger">@ViewBag.Error</h5>
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="ChangePIN">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="OldPIN" class="control-label"></label>
-                <input asp-for="OldPIN" class="form-control" type="password" />
-                <span asp-validation-for="OldPIN" class="text-danger"></span>
+        <hr />
+        <h5 class="text-danger">@ViewBag.Error</h5>
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="ChangePIN">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="OldPIN" class="control-label"></label>
+                        <input asp-for="OldPIN" class="form-control" type="password" />
+                        <span asp-validation-for="OldPIN" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="NewPIN" class="control-label"></label>
+                        <input asp-for="NewPIN" class="form-control" type="password" />
+                        <span asp-validation-for="NewPIN" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ConfirmNewPIN" class="control-label"></label>
+                        <input asp-for="ConfirmNewPIN" class="form-control" type="password" />
+                        <span asp-validation-for="ConfirmNewPIN" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <br />
+                        <input type="submit" value="Save" class="btn btn-success" /> | 
+                        <a asp-action="AvailableServices" asp-controller="Home">Back</a>
+                    </div>
+                </form>
             </div>
-            <div class="form-group">
-                <label asp-for="NewPIN" class="control-label"></label>
-                <input asp-for="NewPIN" class="form-control" type="password" />
-                <span asp-validation-for="NewPIN" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ConfirmNewPIN" class="control-label"></label>
-                <input asp-for="ConfirmNewPIN" class="form-control" type="password" />
-                <span asp-validation-for="ConfirmNewPIN" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <br />
-                <input type="submit" value="Save" class="btn btn-success" /> | 
-                <a asp-action="AvailableServices">Back</a>
-            </div>
-        </form>
-    </div>
-</div>
+        </div>
+    }
+    else
+    {
+        <h1 class="text-danger">Access Denied &#9888;</h1>
+        <h1 class="text-danger">Please enter your ATM card number to access this service!</h1>
+        <hr />
+        <a asp-action="Index" asp-controller="Home">Home</a>
+    }
+}
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

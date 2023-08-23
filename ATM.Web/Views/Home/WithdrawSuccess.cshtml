@@ -5,6 +5,6 @@
 }
 
 <h1 class="text-success">Withdraw amount successfully.</h1>
-<h3 class="text-dark">Your remaining balance is: @Model.Amount</h3>
+<h3 class="text-dark">Your remaining balance is: ₹ @Model.Amount</h3>
 <hr />
-<a asp-action="AvailableServices">Home</a>
+<p class="text-dark">Transaction completed successfully. Return back to <a asp-action="AvailableServices" asp-controller="Home">Home</a></p>

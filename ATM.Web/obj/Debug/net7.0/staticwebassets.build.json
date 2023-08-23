@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "jrq3F6N7j+WUyQZTGhczQ12YZ+a9T8LZwup+jAASWlk=",
+  "Hash": "LjFUXE8864KvDhvCQNlOBHt+7jbl/5fhGgSOHgxoCeo=",
   "Source": "ATM.Web",
   "BasePath": "_content/ATM.Web",
   "Mode": "Default",
@@ -83,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "C:\\Users\\parthiv\\Documents\\Parthiv\\ASP .NET Core\\UnitTesting\\ATM.Web\\wwwroot\\images\\home-image.png",
+      "SourceId": "ATM.Web",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\parthiv\\Documents\\Parthiv\\ASP .NET Core\\UnitTesting\\ATM.Web\\wwwroot\\",
+      "BasePath": "_content/ATM.Web",
+      "RelativePath": "images/home-image.png",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\home-image.png"
     },
     {
       "Identity": "C:\\Users\\parthiv\\Documents\\Parthiv\\ASP .NET Core\\UnitTesting\\ATM.Web\\wwwroot\\js\\site.js",

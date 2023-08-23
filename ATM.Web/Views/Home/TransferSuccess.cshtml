@@ -1,16 +1,15 @@
 ﻿@inject Microsoft.AspNetCore.Http.IHttpContextAccessor HttpContextAccessor;
 @model ATM.Web.ViewModels.TransferViewModel;
-
-
 @{
     ViewData["Title"] = "Success";
 }
-<h1 class="text-success">Amount transfered successfully.</h1>
+
+<h1 class="text-success">Amount transferred successfully.</h1>
 <h3>Transaction Details:</h3>
 <ul>
     <li>From account: @HttpContextAccessor?.HttpContext.Request.Cookies["acc_no"]</li>
     <li>To account: @Model.AccountNo</li>
-    <li>Amount: @Model.Amount</li>
+    <li>Amount: ₹ @Model.Amount</li>
 </ul>
 <hr />
-<a asp-action="AvailableServices">Home</a>
+<p class="text-dark">Transaction completed successfully. Return back to <a asp-action="AvailableServices" asp-controller="Home">Home</a></p>
