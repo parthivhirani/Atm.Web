@@ -1,9 +1,10 @@
 # Web ATM
 
 This project is created in **_.net 7_** .  
-It contains different **_ATM service_** and its implementation in ASP .Net Core Web Application.
+It contains different **_ATM Service_** and its implementation in ASP .Net Core Web Application.
+---
 
-To run the project follow the below steps:
+## To run the project follow the below steps:
 - Download zip file of project and extract it.
 - Change database connection string from **_Program.cs_** file as per your database credentials.
 - Install necessary nuget packages if required.
